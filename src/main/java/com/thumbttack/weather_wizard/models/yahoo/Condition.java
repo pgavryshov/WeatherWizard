@@ -1,25 +1,29 @@
-package com.thumbttack.weather_wizard.models;
+package com.thumbttack.weather_wizard.models.yahoo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Embeddable;
+
 @NoArgsConstructor
 @AllArgsConstructor
-public class CityInfo {
+@Embeddable
+public class Condition {
 
     @Getter
     @Setter
-    private String count;
+    private String code;
     @Getter
     @Setter
-    private String created;
+    private String date;
     @Getter
     @Setter
-    private String lang;
+    private String temp;
     @Getter
     @Setter
-    private Results results;
+    private String text;
+
 
 }

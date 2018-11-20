@@ -1,23 +1,26 @@
-package com.thumbttack.weather_wizard.models;
+package com.thumbttack.weather_wizard.models.yahoo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-public class Wind {
+public class Location {
 
     @Getter
     @Setter
-    private String chill;
+    private String city;
     @Getter
     @Setter
-    private String direction;
+    private String country;
     @Getter
     @Setter
-    private String speed;
+    private String region;
 
 
 }

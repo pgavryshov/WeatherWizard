@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.models;
+package com.thumbttack.weather_wizard.models.yahoo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,17 +7,11 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class Location {
-
+public class Astronomy {
     @Getter
     @Setter
-    private String city;
+    private String sunrise;
     @Getter
     @Setter
-    private String country;
-    @Getter
-    @Setter
-    private String region;
-
-
+    private String sunset;
 }

@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.models;
+package com.thumbttack.weather_wizard.models.yahoo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,21 +7,19 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class Units {
+public class CityInfo {
 
     @Getter
     @Setter
-    private String distance;
+    private String count;
     @Getter
     @Setter
-    private String pressure;
+    private String created;
     @Getter
     @Setter
-    private String speed;
+    private String lang;
     @Getter
     @Setter
-    private String temperature;
-
-
+    private Results results;
 
 }

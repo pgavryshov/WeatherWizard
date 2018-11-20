@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.models;
+package com.thumbttack.weather_wizard.models.yahoo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,20 +7,17 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class Condition {
+public class Wind {
 
     @Getter
     @Setter
-    private String code;
+    private String chill;
     @Getter
     @Setter
-    private String date;
+    private String direction;
     @Getter
     @Setter
-    private String temp;
-    @Getter
-    @Setter
-    private String text;
+    private String speed;
 
 
 }

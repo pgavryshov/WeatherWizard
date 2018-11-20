@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.models;
+package com.thumbttack.weather_wizard.models.yahoo;
 
 
 import lombok.AllArgsConstructor;

@@ -1,12 +1,16 @@
-package com.thumbttack.weather_wizard.models;
+package com.thumbttack.weather_wizard.models.yahoo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Embeddable;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Embeddable
 public class Forecast {
 
     @Getter
@@ -27,6 +31,4 @@ public class Forecast {
     @Getter
     @Setter
     private String text;
-
-
 }

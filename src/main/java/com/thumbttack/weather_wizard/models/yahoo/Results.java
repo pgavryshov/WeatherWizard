@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.models;
+package com.thumbttack.weather_wizard.models.yahoo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,11 +7,12 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class Astronomy {
+public class Results {
+
     @Getter
     @Setter
-    private String sunrise;
-    @Getter
-    @Setter
-    private String sunset;
+    private Channel channel;
+
+
+
 }
