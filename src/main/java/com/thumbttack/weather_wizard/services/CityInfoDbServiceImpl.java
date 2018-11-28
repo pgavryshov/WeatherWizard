@@ -1,36 +1,31 @@
 package com.thumbttack.weather_wizard.services;
 
-import com.thumbttack.weather_wizard.converters.CityInfoToCityInfoDB;
-import com.thumbttack.weather_wizard.models.yahoo.CityInfo;
+import com.google.common.collect.Lists;
 import com.thumbttack.weather_wizard.models.db.CityInfoDB;
 import com.thumbttack.weather_wizard.repositories.CityInfoDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CityInfoDbServiceImpl implements CityInfoDbService {
 
     private CityInfoDBRepository cityInfoDBRepository;
-    private CityInfoToCityInfoDB cityInfoToCityInfoDB;
 
     @Autowired
-    public CityInfoDbServiceImpl(CityInfoDBRepository cityInfoDBRepository, CityInfoToCityInfoDB cityInfoToCityInfoDB) {
+    public CityInfoDbServiceImpl(CityInfoDBRepository cityInfoDBRepository) {
         this.cityInfoDBRepository = cityInfoDBRepository;
-        this.cityInfoToCityInfoDB = cityInfoToCityInfoDB;
-    }
-
-
-    @Override
-    public List<CityInfoDB> listAll() {
-        return new ArrayList<>(cityInfoDBRepository.findAll());
     }
 
     @Override
-    public CityInfoDB getById(Long id) {
-        return null;
+    public ArrayList listAll() {
+        return Lists.newArrayList(cityInfoDBRepository.findAll());
+    }
+
+    @Override
+    public CityInfoDB getById(String name) {
+        return cityInfoDBRepository.findById(name).get();
     }
 
     @Override
@@ -40,14 +35,12 @@ public class CityInfoDbServiceImpl implements CityInfoDbService {
     }
 
     @Override
-    public void delete(Long id) {
-        cityInfoDBRepository.deleteById(id);
+    public void delete(String name) {
+        cityInfoDBRepository.deleteById(name);
     }
 
     @Override
-    public CityInfoDB saveOrUpdateCity(CityInfo cityInfo) {
-        CityInfoDB saveCity = saveOrUpdate(cityInfoToCityInfoDB.convert(cityInfo));
-        System.out.println("Seved City id: " + saveCity.getName());
-        return saveCity;
+    public boolean exist(String name) {
+        return cityInfoDBRepository.existsById(name);
     }
 }

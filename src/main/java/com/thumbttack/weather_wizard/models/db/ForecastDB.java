@@ -1,5 +1,6 @@
 package com.thumbttack.weather_wizard.models.db;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thumbttack.weather_wizard.models.yahoo.Forecast;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,14 +13,15 @@ import javax.persistence.*;
 @javax.persistence.Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class ForecastDB {
-
-    private ForecastDB(String code, String date, String text, String day, String high, String low) {
-        this.forecast = new Forecast(code, date, day, high, low, text);
-    }
+public class ForecastDB implements Comparable<ForecastDB> {
 
     public ForecastDB(Forecast forecast) {
-        this(forecast.getCode(), forecast.getDate(), forecast.getText(), forecast.getDay(), forecast.getHigh(), forecast.getLow());
+        this.code = forecast.getCode();
+        this.date = forecast.getDate();
+        this.day = forecast.getDay();
+        this.high = forecast.getHigh();
+        this.low = forecast.getLow();
+        this.text = forecast.getText();
     }
 
     @Id
@@ -27,15 +29,35 @@ public class ForecastDB {
     @Getter
     Long _id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "cityInfoName")
     @Setter
     @Getter
     @NonNull
     CityInfoDB cityInfoName;
 
-    @Embedded
     @Getter
-    Forecast forecast;
+    @Setter
+    private String code;
+    @Getter
+    @Setter
+    private String date;
+    @Getter
+    @Setter
+    private String day;
+    @Getter
+    @Setter
+    private String high;
+    @Getter
+    @Setter
+    private String low;
+    @Getter
+    @Setter
+    private String text;
 
+    @Override
+    public int compareTo(ForecastDB o) {
+        return date.compareTo(o.date);
+    }
 }

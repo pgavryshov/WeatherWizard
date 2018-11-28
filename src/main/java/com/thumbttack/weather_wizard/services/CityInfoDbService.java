@@ -1,19 +1,18 @@
 package com.thumbttack.weather_wizard.services;
 
-import com.thumbttack.weather_wizard.models.yahoo.CityInfo;
 import com.thumbttack.weather_wizard.models.db.CityInfoDB;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface CityInfoDbService {
 
-    List<CityInfoDB> listAll();
+    ArrayList listAll();
 
-    CityInfoDB getById(Long id);
+    CityInfoDB getById(String name);
 
     CityInfoDB saveOrUpdate(CityInfoDB city);
 
-    void delete(Long id);
+    void delete(String name);
 
-    CityInfoDB saveOrUpdateCity(CityInfo cityInfo);
+    boolean exist(String name);
 }

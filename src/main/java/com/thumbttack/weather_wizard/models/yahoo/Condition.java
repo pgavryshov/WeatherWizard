@@ -9,7 +9,6 @@ import javax.persistence.Embeddable;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Embeddable
 public class Condition {
 
     @Getter

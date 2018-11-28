@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Embeddable;
-
-@Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location {
@@ -21,6 +18,4 @@ public class Location {
     @Getter
     @Setter
     private String region;
-
-
 }

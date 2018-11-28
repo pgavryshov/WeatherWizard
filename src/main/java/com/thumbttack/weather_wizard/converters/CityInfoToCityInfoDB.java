@@ -7,20 +7,24 @@ import com.thumbttack.weather_wizard.models.db.LocationDB;
 import com.thumbttack.weather_wizard.models.yahoo.CityInfo;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 @Component
 public class CityInfoToCityInfoDB {
-    public CityInfoDB convert(CityInfo cityInfo) {
+    public CityInfoDB convert(CityInfo cityInfo, String name) {
         CityInfoDB cityInfoDB = new CityInfoDB();
         ForecastDB forecastDB = new ForecastDB(cityInfo.getResults().getChannel().getItem().getForecast());
-        Set<ForecastDB> set = new HashSet<>();
+        SortedSet<ForecastDB> set = new TreeSet<>();
         forecastDB.setCityInfoName(cityInfoDB);
         set.add(forecastDB);
-        cityInfoDB.setCondition(new ConditionDB(cityInfo.getResults().getChannel().getItem().getCondition()));
+
+        SortedSet<ConditionDB> setConditions = new TreeSet<>();
+        setConditions.add(new ConditionDB(cityInfo.getResults().getChannel().getItem().getCondition()));
+        cityInfoDB.setConditions(setConditions);
         cityInfoDB.setForecasts(set);
         cityInfoDB.setLocation(new LocationDB(cityInfo.getResults().getChannel().getLocation()));
+        cityInfoDB.setName(name);
         return cityInfoDB;
     }
 }
