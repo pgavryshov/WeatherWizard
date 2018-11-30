@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class PostgressExeptions {
+public class PostgresExceptions {
 
     private String message;
 

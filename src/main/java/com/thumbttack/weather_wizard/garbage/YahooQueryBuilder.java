@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.Garbage;
+package com.thumbttack.weather_wizard.garbage;
 
 import org.yql4j.YqlQueryBuilder;
 

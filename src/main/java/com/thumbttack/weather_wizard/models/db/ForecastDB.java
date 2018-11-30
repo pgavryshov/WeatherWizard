@@ -9,11 +9,12 @@ import lombok.Setter;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @javax.persistence.Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class ForecastDB implements Comparable<ForecastDB> {
+public class ForecastDB implements Comparable<ForecastDB>, Serializable {
 
     public ForecastDB(Forecast forecast) {
         this.code = forecast.getCode();

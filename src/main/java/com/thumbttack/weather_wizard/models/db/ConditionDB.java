@@ -9,12 +9,13 @@ import lombok.Setter;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @javax.persistence.Entity
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConditionDB implements Comparable<ConditionDB>  {
+public class ConditionDB implements Comparable<ConditionDB>, Serializable {
 
     public ConditionDB(Condition condition) {
         this.code = condition.getCode();

@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.Garbage;
+package com.thumbttack.weather_wizard.garbage;
 
 public class Utils {
 

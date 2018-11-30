@@ -2,15 +2,14 @@ package com.thumbttack.weather_wizard.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thumbttack.weather_wizard.Garbage.YahooQueryBuilder;
+import com.thumbttack.weather_wizard.WeatherWizardApplication;
 import com.thumbttack.weather_wizard.converters.CityInfoToCityInfoDB;
-import com.thumbttack.weather_wizard.exeptions.IsForecastCopyException;
+import com.thumbttack.weather_wizard.garbage.YahooQueryBuilder;
 import com.thumbttack.weather_wizard.models.db.CityInfoDB;
-import com.thumbttack.weather_wizard.models.db.LocationDB;
 import com.thumbttack.weather_wizard.models.yahoo.CityInfo;
 import com.thumbttack.weather_wizard.services.CityInfoDbService;
-import com.thumbttack.weather_wizard.services.LocationDbService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +26,11 @@ public class WeatherController {
 
     private CityInfoDbService cityInfoDbService;
     private CityInfoToCityInfoDB cityInfoToCityInfoDB;
-    private LocationDbService locationDbService;
+    private JmsTemplate jmsTemplate;
 
     @Autowired
-    public void setLocationDbService(LocationDbService locationDbService) {
-        this.locationDbService = locationDbService;
+    public void setJmsTemplate(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
     }
 
     @Autowired
@@ -46,30 +45,15 @@ public class WeatherController {
 
     @GetMapping("/save/{name}")
     public String saveCity(@PathVariable("name") String name) throws JsonProcessingException, URISyntaxException {
-        CityInfoDB cityInfoDB = cityInfoToCityInfoDB.convert(new RestTemplate()
-                .getForObject(new URI(new YahooQueryBuilder().createQuery(name)), CityInfo.class), name);
-        try {
-            if (cityInfoDbService.exist(name)) {
-                CityInfoDB oldCityInfoDB = cityInfoDbService.getById(name);
-                oldCityInfoDB.update(cityInfoDB);
-                cityInfoDB = oldCityInfoDB;
-            } else {
-                LocationDB locationDB = cityInfoDB.getLocation();
-                if (locationDbService.exist(locationDB)) {
-                    cityInfoDB.setLocation(locationDbService.getByLocation(locationDB));
-                }
-            }
-            cityInfoDB = cityInfoDbService.saveOrUpdate(cityInfoDB);
-        } catch (Exception e) {
-            throw new IsForecastCopyException(name, cityInfoDB, e);
-        }
+        CityInfoDB cityInfoDB = cityInfoToCityInfoDB.convert(queryToYahoo(name), name);
+        jmsTemplate.convertAndSend(WeatherWizardApplication.CITY_INFO_QUEUE, cityInfoDB);
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(cityInfoDB);
     }
 
     @GetMapping("getAll")
     public String getAllCity() throws JsonProcessingException {
-        ArrayList cityInfoDBS = null;
+        ArrayList cityInfoDBS;
         try {
             cityInfoDBS = cityInfoDbService.listAll();
         } catch (Exception e) {
@@ -81,7 +65,7 @@ public class WeatherController {
 
     @GetMapping("getByName/{name}")
     public String getCityByName(@PathVariable("name") String name) throws JsonProcessingException {
-        CityInfoDB cityInfoDB = null;
+        CityInfoDB cityInfoDB;
         try {
             cityInfoDB = cityInfoDbService.getById(name);
         } catch (Exception e) {
@@ -92,12 +76,16 @@ public class WeatherController {
     }
 
     @GetMapping("removeByName/{name}")
-    public String removeCityByName(@PathVariable("name") String name) throws JsonProcessingException {
+    public String removeCityByName(@PathVariable("name") String name) {
         try {
             cityInfoDbService.delete(name);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return "done";
+    }
+
+    private CityInfo queryToYahoo(String name) throws URISyntaxException {
+        return new RestTemplate().getForObject(new URI(new YahooQueryBuilder().createQuery(name)), CityInfo.class);
     }
 }
