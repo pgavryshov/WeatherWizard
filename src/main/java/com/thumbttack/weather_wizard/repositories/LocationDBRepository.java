@@ -1,6 +1,6 @@
 package com.thumbttack.weather_wizard.repositories;
 
-import com.thumbttack.weather_wizard.models.db.LocationDB;
+import com.thumbttack.weather_wizard.model.db.LocationDB;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

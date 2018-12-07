@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thumbttack.weather_wizard.WeatherWizardApplication;
 import com.thumbttack.weather_wizard.exeptions.IsForecastCopyException;
-import com.thumbttack.weather_wizard.models.db.CityInfoDB;
+import com.thumbttack.weather_wizard.model.db.CityInfoDB;
 import com.thumbttack.weather_wizard.services.CityInfoDbService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

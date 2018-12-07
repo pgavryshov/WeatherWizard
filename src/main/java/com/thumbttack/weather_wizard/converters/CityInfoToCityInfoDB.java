@@ -1,10 +1,10 @@
 package com.thumbttack.weather_wizard.converters;
 
-import com.thumbttack.weather_wizard.models.db.CityInfoDB;
-import com.thumbttack.weather_wizard.models.db.ConditionDB;
-import com.thumbttack.weather_wizard.models.db.ForecastDB;
-import com.thumbttack.weather_wizard.models.db.LocationDB;
-import com.thumbttack.weather_wizard.models.yahoo.CityInfo;
+import com.thumbttack.weather_wizard.model.db.CityInfoDB;
+import com.thumbttack.weather_wizard.model.db.ConditionDB;
+import com.thumbttack.weather_wizard.model.db.ForecastDB;
+import com.thumbttack.weather_wizard.model.db.LocationDB;
+import com.thumbttack.weather_wizard.model.yahoo.CityInfo;
 import org.springframework.stereotype.Component;
 
 import java.util.SortedSet;

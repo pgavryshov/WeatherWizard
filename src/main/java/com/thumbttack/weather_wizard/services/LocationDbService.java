@@ -1,6 +1,6 @@
 package com.thumbttack.weather_wizard.services;
 
-import com.thumbttack.weather_wizard.models.db.LocationDB;
+import com.thumbttack.weather_wizard.model.db.LocationDB;
 
 import java.util.ArrayList;
 

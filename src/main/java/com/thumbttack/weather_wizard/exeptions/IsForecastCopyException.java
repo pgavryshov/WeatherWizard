@@ -1,6 +1,6 @@
 package com.thumbttack.weather_wizard.exeptions;
 
-import com.thumbttack.weather_wizard.models.db.CityInfoDB;
+import com.thumbttack.weather_wizard.model.db.CityInfoDB;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
