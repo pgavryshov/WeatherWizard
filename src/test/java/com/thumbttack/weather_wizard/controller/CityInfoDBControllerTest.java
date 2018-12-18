@@ -26,7 +26,7 @@ public class CityInfoDBControllerTest {
     protected WebApplicationContext wac;
 
     @Autowired
-    CityInfoDBController weatherController;
+    NameController weatherController;
 
     @Before
     public void setup() {
@@ -37,24 +37,21 @@ public class CityInfoDBControllerTest {
 
     @Test
     public void testSaveCity() throws Exception {
-        mockMvc.perform(get("/yahoo/save/45").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+        mockMvc.perform(get("/save").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
     }
 
     @Test
     public void testGetCity() throws Exception {
-        mockMvc.perform(get("/yahoo/save/45").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-        mockMvc.perform(get("/yahoo/getByName/45").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+        mockMvc.perform(get("/get").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
     }
 
     @Test
     public void testGetAllCites() throws Exception {
-        mockMvc.perform(get("/yahoo/save/45").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-        mockMvc.perform(get("/yahoo/getAll").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+        mockMvc.perform(get("/getAll").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
     }
 
     @Test
     public void testRemoveCity() throws Exception {
-        mockMvc.perform(get("/yahoo/save/45").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-        mockMvc.perform(get("/yahoo/removeByName/45").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+        mockMvc.perform(get("/remove").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
     }
 }

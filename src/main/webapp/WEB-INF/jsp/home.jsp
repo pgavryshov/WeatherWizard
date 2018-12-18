@@ -15,13 +15,13 @@
     <a href="save">save</a>
 </div>
 <div>
-    <a href="getByName">getByName</a>
+    <a href="get">getByName</a>
 </div>
 <div>
-    <a href="removeByName">removeByName</a>
+    <a href="remove">removeByName</a>
 </div>
-<div>
-    <a href="edit">edit</a>
-</div>
+<%--<div>--%>
+    <%--<a href="edit">edit</a>--%>
+<%--</div>--%>
 </body>
 </html>
