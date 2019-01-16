@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.exeptions;
+package com.thumbttack.weather_wizard.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +8,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(IsForecastCopyException.class)
-    protected ResponseEntity<PostgresExceptions> handleForecastException(IsForecastCopyException e) {
+    @org.springframework.web.bind.annotation.ExceptionHandler(CustomException.class)
+    protected ResponseEntity<PostgresExceptions> handleForecastException(CustomException e) {
         return new ResponseEntity<>(new PostgresExceptions(e.getErrorText()), HttpStatus.BAD_REQUEST);
     }
 

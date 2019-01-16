@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.model.db;
+package com.thumbttack.weather_wizard.model.domain;
 
 import com.thumbttack.weather_wizard.model.yahoo.Location;
 import lombok.AllArgsConstructor;

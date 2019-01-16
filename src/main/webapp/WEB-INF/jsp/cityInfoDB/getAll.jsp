@@ -15,13 +15,16 @@
 
 <div>
     <h2>JSP GET_ALL Page</h2>
-    <c:forEach items="${getAll}" var="cityInfoDB">
-      <div> ${cityInfoDB.name} </div>
+    <c:forEach items="${cityNameAll}" var="city">
+      <div> ${city.name} </div>
     </c:forEach>
 </div>
 <div>
     <a href="/">back</a>
 </div>
+
+
+<div>${errorMessage}</div>
 
 </body>
 </html>

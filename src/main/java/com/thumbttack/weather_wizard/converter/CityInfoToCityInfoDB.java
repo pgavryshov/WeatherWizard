@@ -1,9 +1,9 @@
-package com.thumbttack.weather_wizard.converters;
+package com.thumbttack.weather_wizard.converter;
 
-import com.thumbttack.weather_wizard.model.db.CityInfoDB;
-import com.thumbttack.weather_wizard.model.db.ConditionDB;
-import com.thumbttack.weather_wizard.model.db.ForecastDB;
-import com.thumbttack.weather_wizard.model.db.LocationDB;
+import com.thumbttack.weather_wizard.model.domain.CityInfoDB;
+import com.thumbttack.weather_wizard.model.domain.ConditionDB;
+import com.thumbttack.weather_wizard.model.domain.ForecastDB;
+import com.thumbttack.weather_wizard.model.domain.LocationDB;
 import com.thumbttack.weather_wizard.model.yahoo.CityInfo;
 import org.springframework.stereotype.Component;
 

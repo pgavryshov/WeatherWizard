@@ -15,10 +15,13 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Remove city</button>
 </form>
 <div>
-    <div> ${removeCity} </div>
+    <div> ${cityStatus} </div>
 </div>
 <div>
     <a href="/">back</a>
 </div>
+
+<div>${errorMessage}</div>
+
 </body>
 </html>

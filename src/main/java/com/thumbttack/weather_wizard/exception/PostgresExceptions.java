@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.exeptions;
+package com.thumbttack.weather_wizard.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

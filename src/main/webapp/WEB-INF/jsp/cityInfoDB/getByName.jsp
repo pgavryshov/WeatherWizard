@@ -15,10 +15,13 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Get city</button>
 </form>
 <div>
-    <div> ${getByName} - is add in database</div>
+    <div> ${city}</div>
 </div>
 <div>
     <a href="/">back</a>
 </div>
+
+<div>${errorMessage}</div>
+
 </body>
 </html>

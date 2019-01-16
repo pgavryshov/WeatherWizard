@@ -3,9 +3,9 @@ package com.thumbttack.weather_wizard.listener;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thumbttack.weather_wizard.WeatherWizardApplication;
-import com.thumbttack.weather_wizard.exeptions.IsForecastCopyException;
-import com.thumbttack.weather_wizard.model.db.CityInfoDB;
-import com.thumbttack.weather_wizard.services.CityInfoDbService;
+import com.thumbttack.weather_wizard.exception.CustomException;
+import com.thumbttack.weather_wizard.model.domain.CityInfoDB;
+import com.thumbttack.weather_wizard.service.CityInfoDbService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class CityInfoListener {
         try {
             cityInfoDB = cityInfoDbService.saveOrUpdate(cityInfoDB);
         } catch (Exception e) {
-            throw new IsForecastCopyException(cityInfoDB.getName(), cityInfoDB, e);
+            throw new CustomException();
         }
         ObjectMapper mapper = new ObjectMapper();
         log.info(mapper.writeValueAsString(cityInfoDB));

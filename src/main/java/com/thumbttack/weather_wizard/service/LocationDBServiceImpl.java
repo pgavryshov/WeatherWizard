@@ -1,8 +1,8 @@
-package com.thumbttack.weather_wizard.services;
+package com.thumbttack.weather_wizard.service;
 
 import com.google.common.collect.Lists;
-import com.thumbttack.weather_wizard.model.db.LocationDB;
-import com.thumbttack.weather_wizard.repositories.LocationDBRepository;
+import com.thumbttack.weather_wizard.model.domain.LocationDB;
+import com.thumbttack.weather_wizard.repository.LocationDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

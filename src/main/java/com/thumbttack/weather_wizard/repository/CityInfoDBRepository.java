@@ -1,6 +1,6 @@
-package com.thumbttack.weather_wizard.repositories;
+package com.thumbttack.weather_wizard.repository;
 
-import com.thumbttack.weather_wizard.model.db.CityInfoDB;
+import com.thumbttack.weather_wizard.model.domain.CityInfoDB;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

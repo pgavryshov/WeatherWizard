@@ -12,5 +12,8 @@
 <div>
     <a href="/">back</a>
 </div>
+
+<div>${errorMessage}</div>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.thumbttack.weather_wizard.model.db;
+package com.thumbttack.weather_wizard.model.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,25 +15,24 @@ import java.util.TreeSet;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CityInfoDB implements Serializable {
-    @Getter
-    @Setter
+    @Getter @Setter
     @Id
     String name;
-    @Getter
-    @Setter
+
+    @Getter @Setter
     @JoinColumn(name = "cityInfoName")
     @NonNull
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     LocationDB location;
-    @Getter
-    @Setter
+
+    @Getter @Setter
     @JoinColumn(name = "cityInfoName")
     @NonNull
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @javax.persistence.OrderBy("date")
     private SortedSet<ConditionDB> conditions = new TreeSet<ConditionDB>();
-    @Getter
-    @Setter
+
+    @Getter @Setter
     @JoinColumn(name = "cityInfoName")
     @NonNull
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
